@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
+  get '/rankings' => 'pages#rankings'
+  get '/primary_results' => 'pages#primary_results'
   root 'pages#home'
 
   # Example of regular route:
