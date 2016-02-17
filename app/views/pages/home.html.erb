@@ -13,7 +13,7 @@
         <thead>
           <tr>
             <th>NAME</th>
-            <th>GOP</th>
+            <th>GOP Picks</th>
           </tr>
         </thead>
       </table>
@@ -21,3 +21,51 @@
   </div>
 
 </div>
+
+<br />
+<br />
+<br />
+
+<div class="container">
+   <div class="row">
+      <div id="picksForm" class="well well-sm col-sm-6 col-sm-offset-3">
+         <form>
+           <fieldset class="form-group">
+             <label for="formGroupExampleInput">Name</label>
+             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Joe Example">
+             <small class="text-muted">This is where you put YOUR name.</small>
+           </fieldset>
+           <fieldset class="form-group">
+             <label for="formGroupExampleInput2">GOP Picks</label>
+             <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Candidate #1 Candidate #2">
+             <small class="text-muted">For now just put a space between each candidates nameas shown in the placeholder text. I'll make it cooler and more user friendly later.</small>
+           </fieldset>
+
+           <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
+      </div>
+   </div>
+</div>
+
+<script>
+   // Add picks to <table>
+   function picksAdd() {
+      // First check if a <tbody> tag exists, add one if not
+      if($("#picksTable tbody").length == 0) {
+         $("#picksTable").append("<tbody></tbody>");
+      }
+
+      // Append pick to the table
+      $("#picksTable tbody").append(
+         "<tr>" +
+            "<td>Joe Example</td>" +
+            "<td>1. Candidate #1 <br /> 2. Candidate #2</td>" +
+         "</tr>"
+      );
+   }
+
+   $(document).ready(function() {
+      picksAdd();
+   });
+
+</script

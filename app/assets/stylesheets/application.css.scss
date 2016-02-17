@@ -17,11 +17,19 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-#resultsHead {
-   // margin-left: 370px;
-   // margin-right: 370px;
+#picksTable {
+   border: 2px solid red;
 }
 
-#picksTable{
-   margin-left: -14px;
+
+#resultsHead {
+   margin: 0 auto;
+   color: #D00000;
+   box-sizing: border-box;
+}
+
+#resultsTable {
+   margin: 0 auto;
+   // margin-left: -14px;
+   border: 1px solid navy;
 }
