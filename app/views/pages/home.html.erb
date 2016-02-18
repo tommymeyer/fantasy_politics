@@ -14,6 +14,7 @@
           <tr>
             <th>NAME</th>
             <th>GOP Picks</th>
+            <th>Delete</th>
           </tr>
         </thead>
       </table>
@@ -31,41 +32,86 @@
       <div id="picksForm" class="well well-sm col-sm-6 col-sm-offset-3">
          <form>
            <fieldset class="form-group">
-             <label for="formGroupExampleInput">Name</label>
-             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Joe Example">
+             <label for="userName">Name</label>
+             <input type="text" class="form-control" id="userName" placeholder="Joe Example">
              <small class="text-muted">This is where you put YOUR name.</small>
            </fieldset>
            <fieldset class="form-group">
-             <label for="formGroupExampleInput2">GOP Picks</label>
-             <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Candidate #1 Candidate #2">
+             <label for="gopPicks">GOP Picks</label>
+             <input type="text" class="form-control" id="gopPicks" placeholder="Candidate #1 Candidate #2">
              <small class="text-muted">For now just put a space between each candidates nameas shown in the placeholder text. I'll make it cooler and more user friendly later.</small>
            </fieldset>
 
-           <button type="submit" class="btn btn-success">Submit Picks</button>
+           <button type="button" id="updateButton" class="btn btn-success" onclick="picksUpdate();">Submit Picks</button>
          </form>
       </div>
    </div>
 </div>
 
 <script>
+
    // Add picks to <table>
-   function picksAdd() {
+   // function picksAdd() {
+   //    // First check if a <tbody> tag exists, add one if not
+   //    if($("#picksTable tbody").length == 0) {
+   //       $("#picksTable").append("<tbody></tbody>");
+   //    }
+   //
+   //     Append pick to the table
+   //    $("#picksTable tbody").append(
+   //       "<tr>" +
+   //          "<td>Joe Example</td>" +
+   //          "<td>1. Candidate #1 <br /> 2. Candidate #2</td>" +
+   //       "</tr>"
+   //    );
+   // }
+
+   // Add picks to table
+   function picksAddToTable() {
       // First check if a <tbody> tag exists, add one if not
-      if($("#picksTable tbody").length == 0) {
-         $("#picksTable").append("<tbody></tbody>");
+      if ($("#picksTable tbody").length == 0){
+         $("picksTable").append("<tbody></tbody>");
       }
 
-      // Append pick to the table
+   // Clear form
+   function formClear() {
+      $("#userName").val("");
+      $("#gopPicks").val("");
+   }
+
+   function pickDelete(ctl) {
+      $(ctl).parents("tr").remove();
+   }
+
+      // Append picks to table
       $("#picksTable tbody").append(
          "<tr>" +
-            "<td>Joe Example</td>" +
-            "<td>1. Candidate #1 <br /> 2. Candidate #2</td>" +
+            "<td>" + $("#userName").val() + "</td>" +
+            "<td>" + $("#gopPicks").val() + "</td>" +
+            "<td>" + "<button type='button'" + "onclick='pickDelete(this);'" + "class='btn btn-danger'>" + "<span class='glyphicon glyphicon-remove' />" + "</button>" + "</td>" +
          "</tr>"
       );
    }
 
+
+   // Button function once button is clicked
+   function picksUpdate() {
+      if ($("#userName").val() != null && $("#userName").val() != '') {
+            // Add product to table
+            pickAddToTable();
+            // Clear form fields
+            formClear();
+            // Focus to userName field
+            $("#userName").focus();
+      }
+   }
+
+
    $(document).ready(function() {
-      picksAdd();
+      picksAddToTable();
+      picksUpdate();
+      formClear();
+      pickDelete();
    });
 
 </script
